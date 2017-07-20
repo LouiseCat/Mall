@@ -1,0 +1,105 @@
+		<!--index-->
+		ul,h3,h2,h1,h4,h5,h6,body{padding: 0px; margin: 0px;}
+		#containter{width: 980px;  margin: 0px auto; font-size: 12px; }
+		#pagetop{min-height: 71px;}
+		#pagebody{min-height: 600px;}
+		#pagefooter{min-height: 100px;clear: both;margin-top:805px;}
+		
+		#logo{width: 227px;height: 65px; float: left;margin-top:5px;}
+		.topinfo{width: 325px;float: left;line-height: 65px;overflow:hidden; padding-left: 30px; }
+		.topnav{width: 500px;}
+		.topnavlsit{width: 500px;height: 30px;}
+		.topnavlsit ul{list-style: none;}
+		.topnavlsit ul li{display: inline-block;width: 60px;}
+		.topnavlsit ul li a{text-decoration: none;color:#000000;}
+		
+		#nav{text-align: center;}
+		#nav ul{list-style:none ;margin: 0px;padding: 0px;}
+		#nav ul li{width: 80px; height: 36px;font-size: 16px;font-weight: bold;display: inline-block;text-align: center;margin-top: 5px;}
+		#nav ul li a{text-decoration: none; color: white;}
+		#nav span a {text-decoration: none;color: white;}
+		
+		
+		#bleft{width: 195px;border: min-height: 600px;float: left;margin-right: 4px;}
+		.userbox{ margin: 5px auto;}
+		.userbox h3{ width: 195px;height: 30px;line-height: 30px;background: url(img/la_4.gif);text-align: center;color: white;font-size: 16px;}
+		.userbox ul{border-left: solid #F00 1px;border-right: solid #F00 1px;border-bottom: solid #F00 1px; list-style: none;padding-left:20px ;}
+		.userbox ul li{line-height: 24px;text-indent: 30px;}
+		.userbox ul li a{color: #333 ;text-decoration: none;}
+		
+		.productbox{ margin: 5px auto;}
+		.productbox h3{ width: 195px;height: 30px;line-height: 30px;background: url(img/la_4.gif);text-align: center;color: white;font-size: 16px;}
+		.productbox h1{ background: url(img/dot.gif) no-repeat center left ;margin-left: 10px ;padding-left:10px ;font-size:15px ;}
+		
+		.pinpaibox{}
+		.pinpaibox h4{width: 195px;height: 30px;line-height: 30px;background: url(img/la_4.gif);text-align: center;color: white;font-size: 16px;}
+		.pinpaibox ul{border: solid #F00 1px; border-top:none;list-style: none;padding-left:20px ;}
+		.pinpaibox ul li{display: inline;margin: 3px;}
+		.pinpaibox img{border: solid 1px gray ;}
+		
+		.box{}
+		.box h4{color: red; text-indent: 15px;font-size: 14px;}
+		.box ul{list-style: none;margin-bottom: 5px;}
+		.box ul li{height: 25px;line-height: 25px;text-indent: 20px;border-bottom: dotted 1px #ccc;}
+		.box ul li span {margin: 0px 10px;}
+		.box ul li a{color: #333;text-decoration: none;}
+		
+		#bmiddle{width: 582px;min-height: 600px;float: left;}
+		#banner{position: relative;width:580px;height: 286px;overflow: hidden;}
+		#banner_list img{border: 0px;width:580px;height: 286px;}
+		#banner_bg {position: absolute;bottom: 0;background-color: #000;height: 30px;filter: Alpha(Opacity=30);opacity: 0.3;z-index: 1000;
+		cursor: pointer;width:580px;}
+		#banner_info{position: absolute;bottom: 0px;left: 5px;height: 22px;color: #fff;z-index: 1001;cursor: pointer;}
+		#banner_text{position: absolute;width: 120px;z-index: 1002;right: 3px;bottom: 3px;}
+		#banner ul{position:absolute;list-style-type: none;filter: Alpha(Opacity=80);opacity: 0.8;border: 1px solid #fff;z-index: 1002;
+		margin: 0px;padding: 0px;bottom: 3px;right:5px;}
+		#banner ul li {padding: 0px 8px;float: left;display: block;color: #fff;border: #E5EAFF 1px solid;background: #6F4F67;cursor: pointer;}
+		#banner ul li.on{background: #900;}
+		#banner_list a{position: absolute;}
+		
+		.productimg{height: ;}
+		.productimg h4{background: url(img/ca_1.gif) no-repeat; height: 31px;line-height: 31px; text-indent: 30px;color: white;font-size: 16px;overflow: hidden;}
+		.productimg ul{list-style: none;width: 575px;margin: 10px 20px;}
+		.productimg ul li{display: inline-block;text-align: center;}
+		.productimg ul li div{margin: 2px 2px;}
+		.pname{color:gray}
+		.price{color: red;font-weight: bold;}
+		
+		.pay{background:whitesmoke;border: none;margin-top: 20px;}
+		.pay span{color: gray;font-size: 13px;}
+		.pay ul{margin-left: 5px;}
+		.pay ul li{list-style: none;display: inline;}
+		.pay ul li a{}
+	
+		#bright{width: 195px;min-height: 600px;float: left;margin-left: 4px;}
+		.rbox{margin-top: 5px;}
+		.rbox h4{background: url(img/la_7.gif); font-size: 16px;color: #fff;text-align: center;line-height: 30px;height: 30px;}
+		.rbox ul{list-style: none;border: solid 1px red;border-top: none;}
+		.rbox ul li{text-decoration: none;line-height: 25px;text-indent: 10px;background: url(img/dot.gif) no-repeat center left;margin-left: 10px;}
+		.rbox ul li a{text-decoration: none;color: #333;}
+		
+		.huoban{margin-bottom: 5px;}
+		.huoban h4{width: 195px;height: 30px;line-height: 30px;background: url(img/la_4.gif);text-align: center;color: white;font-size: 16px;}	
+		.huoban ul{text-align: center;border: solid 1px red;border-top: none;list-style: none;}
+		.huoban ul li {padding: 5px;}
+		.huoban ul li a{text-decoration: none;color: gray;}
+		
+		.service{border: 1px solid red; border-top: none; padding: 5px;color: #333;}
+		.service div{margin: 2px auto; padding: 3px;}
+		.service01{float: left;} 
+		.service02 span{padding: 3px 3px;}
+		.tbox{border: 1px solid red; border-top: none;min-height: 700px;}
+		.tui{clear: both; border-bottom: dotted 1px #666;min-height: 100px; }
+		
+		.footInfo{background:url(img/copy_line.gif);height: 126px;border: solid 1px brown;margin-top: 40px;}
+		.footInfo h4{text-indent: 30px;color: red;font-weight: bold;margin-top:10px ;font-size: 14px;}
+		.footInfo ul{list-style: none;margin: 0px ;padding: 0px;text-align: left;line-height: 24px;}
+		.footInfo ul .listnav{display: inline-block;width: 170px;}
+		.footInfo ul .listnav ul li{background: url(img/dot.gif) no-repeat center left;line-height: 20px;text-indent: 10px;margin-left: 30px;}
+		.footInfo ul .listnav ul li a{text-decoration: none;color: gray;}
+		
+		#foot{text-align: center;color: gray;}
+		#foot div{line-height: 25px;}
+		#foot div span{margin: 0px 20px;}
+		
+		

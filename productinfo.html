@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>商品详情</title>
+	</head>
+	<script type="text/javascript" src="js/Date.js"></script>
+	<script type="text/javascript" src="js/picture.js"></script>
+	<script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
+	<script type="text/javascript" src="js/jquery-1.4.1.js"></script>
+	<script type="text/javascript" src="js/banner.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/basic.css" />
+	<!--因为时间原因未能将css与页面分离-->
+	<style type="text/css">
+		ul,
+		h3,
+		h2,
+		h1,
+		h4,
+		h5,
+		h6,
+		body {
+			padding: 0px;
+			margin: 0px;
+		}
+		
+		#containter {
+			width: 980px;
+			margin: 0px auto;
+			font-size: 12px;
+		}
+		
+		#pagetop {
+			min-height: 71px;
+		}
+		
+		#pagebody {
+			min-height: 600px;
+		}
+		
+		#pagefooter {
+			min-height: 100px;
+			clear: both;
+			margin-top: 640px;
+		}
+		
+		#logo {
+			width: 227px;
+			height: 65px;
+			float: left;
+			margin-top: 5px;
+		}
+		
+		.topinfo {
+			width: 325px;
+			float: left;
+			line-height: 65px;
+			overflow: hidden;
+			padding-left: 30px;
+		}
+		
+		.topnav {
+			width: 500px;
+		}
+		
+		.topnavlsit {
+			width: 500px;
+			height: 30px;
+			margin-top: 10px;
+		}
+		
+		.topnavlsit ul {
+			list-style: none;
+		}
+		
+		.topnavlsit ul li {
+			display: inline-block;
+			width: 60px;
+		}
+		
+		.topnavlsit ul li a {
+			text-decoration: none;
+			color: #000000;
+		}
+		
+		#nav {
+			text-align: center;
+		}
+		
+		#nav ul {
+			list-style: none;
+			margin: 0px;
+			padding: 0px;
+		}
+		
+		#nav ul li {
+			width: 80px;
+			height: 36px;
+			font-size: 16px;
+			font-weight: bold;
+			display: inline-block;
+			text-align: center;
+			margin-top: 5px;
+		}
+		
+		#nav ul li a {
+			text-decoration: none;
+			color: white;
+		}
+		
+		#nav span a {
+			text-decoration: none;
+			color: white;
+		}
+		
+		#bleft {
+			width: 195px;
+			border: min-height: 600px;
+			float: left;
+			margin-right: 4px;
+		}
+		
+		.userbox {
+			margin: 5px auto;
+		}
+		
+		.userbox h3 {
+			width: 195px;
+			height: 30px;
+			line-height: 30px;
+			background: url(img/la_4.gif);
+			text-align: center;
+			color: white;
+			font-size: 16px;
+		}
+		
+		.userbox ul {
+			border-left: solid #F00 1px;
+			border-right: solid #F00 1px;
+			border-bottom: solid #F00 1px;
+			list-style: none;
+			padding-left: 20px;
+		}
+		
+		.userbox ul li {
+			line-height: 24px;
+			text-indent: 30px;
+		}
+		
+		.userbox ul li a {
+			color: #333;
+			text-decoration: none;
+		}
+		
+		.productbox {
+			margin: 5px auto;
+		}
+		
+		.productbox h3 {
+			width: 195px;
+			height: 30px;
+			line-height: 30px;
+			background: url(img/la_4.gif);
+			text-align: center;
+			color: white;
+			font-size: 16px;
+		}
+		
+		.productbox h1 {
+			background: url(img/dot.gif) no-repeat center left;
+			margin-left: 10px;
+			padding-left: 10px;
+			font-size: 15px;
+		}
+		
+		.pinpaibox {}
+		
+		.pinpaibox h4 {
+			width: 195px;
+			height: 30px;
+			line-height: 30px;
+			background: url(img/la_4.gif);
+			text-align: center;
+			color: white;
+			font-size: 16px;
+		}
+		
+		.pinpaibox ul {
+			border: solid #F00 1px;
+			border-top: none;
+			list-style: none;
+			padding-left: 20px;
+		}
+		
+		.pinpaibox ul li {
+			display: inline;
+			margin: 3px;
+		}
+		
+		.pinpaibox img {
+			border: solid 1px gray;
+		}
+		
+		.box {}
+		
+		.box h4 {
+			color: red;
+			text-indent: 15px;
+			font-size: 14px;
+		}
+		
+		.box ul {
+			list-style: none;
+			margin-bottom: 5px;
+		}
+		
+		.box ul li {
+			height: 25px;
+			line-height: 25px;
+			text-indent: 20px;
+			border-bottom: dotted 1px #ccc;
+		}
+		
+		.box ul li span {
+			margin: 0px 10px;
+		}
+		
+		.box ul li a {
+			color: #333;
+			text-decoration: none;
+		}
+		
+		#bmiddle {
+			width: 582px;
+			min-height: 600px;
+			float: left;
+		}
+		
+		#proimgbox {
+			width: 310px;
+			float: left;
+			border: 1px solid #E1E1E1;
+			min-height: 300px;
+		}
+		
+		#bigimgbox {}
+		
+		#smallimglist {}
+		
+		#smallimglist div {
+			float: left;
+			width: 60px;
+			height: 60px;
+			border: 1px solid #E1E1E1;
+		}
+		
+		#smallimglist div img {
+			width: 55px;
+			height: 55px;
+		}
+		
+		#proinfolist {
+			width: 462px;
+			float: left;
+			border: 1px solid #E1E1E1;
+			min-height: 303px;
+		}
+		
+		#proinfolist div {
+			margin: 10px;
+		}
+		
+		#fullimgbox {
+			position: absolute;
+			top: 175px;
+			left: 700px;
+			width: 400px;
+			height: 400px;
+			overflow: hidden;
+			display: none;
+			z-index: 1000;
+		}
+		
+		.productimg {
+			height: ;
+		}
+		
+		.productimg h4 {
+			background: url(img/ca_1.gif) no-repeat;
+			height: 31px;
+			line-height: 31px;
+			text-indent: 30px;
+			color: white;
+			font-size: 16px;
+			overflow: hidden;
+		}
+		
+		.productimg ul {
+			list-style: none;
+			width: 575px;
+			margin: 10px 20px;
+		}
+		
+		.productimg ul li {
+			display: inline-block;
+			text-align: center;
+		}
+		
+		.productimg ul li div {
+			margin: 2px 2px;
+		}
+		
+		.proinfo{
+			text-indent: 10px;	
+			height: 600px;
+			width: 780px;
+			margin-top:380px ;
+			
+			
+		}
+		
+		#protitnfo1{
+			border: 1px solid #ccc;
+			height: 600px;
+			width: 780px;
+			margin-top: -2px;
+		}
+		
+		.protitle{
+			background:url(img/sort1.gif);
+			line-height: 26px;
+			vertical-align: bottom;
+			height: 35px;
+			margin-left: 10px;
+			
+			
+		}
+		
+		
+		
+		.protitle div{
+			width: 80px;
+			height: 25px;
+			display: inline-block;
+			padding-top: 8px;
+			padding-left: 5px;
+			
+			text-decoration: none;
+			color: #000;
+			border: 1px solid #ccc;
+			font-size: 14px;
+			border-bottom: none;
+			
+			
+		}
+		.protitle div:hover{
+			
+			background-color:white ;
+		}
+		.protitle div a{
+			
+			text-decoration: none;
+		}
+		
+		.proinfobox{
+			border: solid 1px #ccc;
+			min-height: 300px;
+			margin-left:10px ;
+			border-top:none ;
+			text-indent: 36px;
+			line-height: 24px;
+		}
+		
+		
+		.protitleinfo{
+			clear: both;
+		}
+		
+		.pname {
+			color: gray
+		}
+		
+		.price {
+			color: red;
+			font-weight: bold;
+		}
+		
+		.pay {
+			background: whitesmoke;
+			border: none;
+			margin-top: 20px;
+		}
+		
+		.pay span {
+			color: gray;
+			font-size: 13px;
+		}
+		
+		.pay ul {
+			margin-left: 5px;
+		}
+		
+		.pay ul li {
+			list-style: none;
+			display: inline;
+		}
+		
+		.pay ul li a {}
+		
+		#bright {
+			width: 195px;
+			min-height: 600px;
+			float: left;
+			margin-left: 4px;
+		}
+		
+		.rbox {
+			margin-top: 5px;
+		}
+		
+		.rbox h4 {
+			background: url(img/la_7.gif);
+			font-size: 16px;
+			color: #fff;
+			text-align: center;
+			line-height: 30px;
+			height: 30px;
+		}
+		
+		.rbox ul {
+			list-style: none;
+			border: solid 1px red;
+			border-top: none;
+		}
+		
+		.rbox ul li {
+			text-decoration: none;
+			line-height: 25px;
+			text-indent: 10px;
+			background: url(img/dot.gif) no-repeat center left;
+			margin-left: 10px;
+		}
+		
+		.rbox ul li a {
+			text-decoration: none;
+			color: #333;
+		}
+		
+		.huoban {
+			margin-bottom: 5px;
+		}
+		
+		.huoban h4 {
+			width: 195px;
+			height: 30px;
+			line-height: 30px;
+			background: url(img/la_4.gif);
+			text-align: center;
+			color: white;
+			font-size: 16px;
+		}
+		
+		.huoban ul {
+			text-align: center;
+			border: solid 1px red;
+			border-top: none;
+			list-style: none;
+		}
+		
+		.huoban ul li {
+			padding: 5px;
+		}
+		
+		.huoban ul li a {
+			text-decoration: none;
+			color: gray;
+		}
+		
+		.service {
+			border: 1px solid red;
+			border-top: none;
+			padding: 5px;
+			color: #333;
+		}
+		
+		.service div {
+			margin: 2px auto;
+			padding: 3px;
+		}
+		
+		.service01 {
+			float: left;
+		}
+		
+		.service02 span {
+			padding: 3px 3px;
+		}
+		
+		.tbox {
+			border: 1px solid red;
+			border-top: none;
+			min-height: 500px;
+		}
+		
+		.tui {
+			clear: both;
+			border-bottom: dotted 1px #666;
+			min-height: 100px;
+		}
+		
+		.footInfo {
+			background: url(img/copy_line.gif);
+			height: 126px;
+			border: solid 1px brown;
+			margin-top: 40px;
+		}
+		
+		.footInfo h4 {
+			text-indent: 30px;
+			color: red;
+			font-weight: bold;
+			margin-top: 10px;
+			font-size: 14px;
+		}
+		
+		.footInfo ul {
+			list-style: none;
+			margin: 0px;
+			padding: 0px;
+			text-align: left;
+			line-height: 24px;
+		}
+		
+		.footInfo ul .listnav {
+			display: inline-block;
+			width: 170px;
+		}
+		
+		.footInfo ul .listnav ul li {
+			background: url(img/dot.gif) no-repeat center left;
+			line-height: 20px;
+			text-indent: 10px;
+			margin-left: 30px;
+		}
+		
+		.footInfo ul .listnav ul li a {
+			text-decoration: none;
+			color: gray;
+		}
+		
+		#foot {
+			text-align: center;
+			color: gray;
+		}
+		
+		#foot div {
+			line-height: 25px;
+		}
+		
+		#foot div span {
+			margin: 0px 20px;
+		}
+	</style>
+
+	<body>
+		<div id="containter">
+			<!--网站头部-->
+			<div id="pagetop" style="position: relative;">
+				<div id="logo">
+					<img src="img/logo.jpg" />
+				</div>
+				<div class="topinfo">
+					<span>您好欢迎登陆小鹿商城！新用户，<a href="register.html">请注册，</a>老用户，<a href="login.html">请登录.</a></span>
+				</div>
+				<div class="topnav" style="clear:both;position: absolute; top: 0px; left: 600px;">
+					<div class="topnavlsit">
+						<ul>
+							<li>
+								<a href="xx.html">帮助中心 |</a>
+							</li>
+							<li>
+								<a href="xx.html">客户反馈 |</a>
+							</li>
+							<li>
+								<a href="xx.html">网站地图 |</a>
+							</li>
+							<li>
+								<a href="xx.html">加入收藏 |</a>
+							</li>
+							<li id="Clock" style="width: 200px;"></li>
+						</ul>
+					</div>
+					<div>
+						<marquee scrollamount=3 direction="up" height="20px" style="text-indent: 40px">
+							<a href="xx.html">特大新闻！明天1元抢购iphone7plus</a>
+						</marquee>
+					</div>
+
+				</div>
+
+				<!--主导航-->
+				<div id="nav" style="clear: both ;">
+					<div  style="background:url(img/top_1.gif); height: 36px;">
+							<ul id="navlist" style="text-align: center; ">
+								<li><a href="index.html">网站首页|</a></li>
+								<li><a href="gouwuche.html">购物车|</a></li>
+								<li><a href="jiesuan.html">结算页面|</a></li>
+								<li><a href="productinfo.html">产品详情|</a></li>
+								<li><a href="productinfolist.html">产品列表|</a></li>
+								<li style="margin-left: -20px;"><a href="productlist.html">报价单</a></li>
+							</ul>
+						</div>
+					<div class="sousuo" style="background:url(img/top_2.gif) no-repeat; height: 36px; text-align: left;text-indent: 25px; position: relative;">
+						<span style="color: #fff;font-size: 16px;">商品搜索：<select><option>所有分类</option><option>最新商品</option><option>热卖商品</option></select></span>
+						<span><input type="text" maxlength="50" size="40"  value="" /><button>搜索</button></span>
+						<span style="color: #fff;font-size: 14px; padding-left: 20px;"><a href="">高级搜索</a></span>
+						<div style="background: url(img/d3.jpg); float: right; margin-right:20px ;width: 305px; height: 24px; line-height: 24px; color:black ;">
+							<span style="position: absolute; right: 195px;"><a  style="color: #000000;"href="">购物车暂时为空</a></span>
+							<span style="position: absolute; right: 105px;"><a style="color: #000000;" href="">去结算</a></span>
+							<span style="position: absolute; right: 30px;"><a style="color: #000000;" href="">用户中心</a></span>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+			<!--网站里部-->
+			<div id="pagebody">
+				<!--左部-->
+				<div id="bleft">
+					<div id="userbox" class="userbox">
+						<h3>用户信息</h3>
+						<ul>
+							<li style="background: url(img/user/1.gif) no-repeat center left">
+								<a href="">登录/注册</a>
+							</li>
+							<li style="background: url(img/user/8.gif) no-repeat center left">
+								<a href="">购物车</a>
+							</li>
+							<li style="background: url(img/user/10.gif) no-repeat center left">
+								<a href="">对比框</a>
+							</li>
+						</ul>
+
+					</div>
+
+					<div id="productbox" class="productbox">
+						<h3>商品分类</h3>
+						<div style="border :solid 1px red ; border-top:none;">
+							<div class="box">
+								<h4><img src="img/dot.gif"/>家用电器</h4>
+								<ul>
+									<li><span><a href="">大  家  电</a></span>|<span><a href="">厨房电器</a></span></li>
+									<li><span><a href="">汽车用品</a></span>|<span><a href="">个人护理</a></span></li>
+									<li><span><a href="">生活电器</a></span>|<span><a href="">其他家电</a></span></li>
+								</ul>
+							</div>
+							<div class="box">
+								<h4><img src="img/dot.gif"/>手机数码</h4>
+								<ul>
+									<li><span><a href="">数码相机</a></span>|<span><a href="">手机通讯</a></span></li>
+									<li><span><a href="">时尚影音</a></span>|<span><a href="">数码配件</a></span></li>
+									<li><span><a href="">数码影像</a></span>|<span><a href="">手机配件</a></span></li>
+								</ul>
+							</div>
+							<div class="box">
+								<h4><img src="img/dot.gif"/>电脑产品</h4>
+								<ul>
+									<li><span><a href="">笔  记  本</a></span>|<span><a href="">办公耗材</a></span></li>
+									<li><span><a href="">电脑软件</a></span>|<span><a href="">网络产品</a></span></li>
+									<li><span><a href="">办公设备</a></span>|<span><a href="">电脑整机</a></span></li>
+								</ul>
+							</div>
+							<div class="box">
+								<h4><img src="img/dot.gif"/>日用百货</h4>
+								<ul>
+									<li><span><a href="">玩具乐器</a></span>|<span><a href="">化妆护理</a></span></li>
+									<li><span><a href="">礼品箱包</a></span>|<span><a href="">钟表手势</a></span></li>
+								</ul>
+							</div>
+							<div class="box">
+								<h4><img src="img/dot.gif"/>服装鞋帽</h4>
+								<ul>
+									<li><span><a href="">运动鞋&nbsp;</a></span>|<span><a href="">女士服装</a></span></li>
+									<li><span><a href="">男士服装</a></span>|<span><a href="">运  动  装</a></span></li>
+								</ul>
+							</div>
+							<div class="box">
+								<h4><img src="img/dot.gif"/>运动健康</h4>
+								<ul>
+									<li><span><a href="">户外运动</a></span>|<span><a href="">运动器械</a></span></li>
+									<li><span><a href="">养身器械</a></span>|<span><a href="">健康食品</a></span></li>
+									<li><span style="float: right;"><a href="">所有分类>></a></span></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<div class="rbox">
+
+						<h4>最近浏览产品</h4>
+						<div class="tbox">
+							<div class="tui">
+								<div style="width: 60px ;height: 60px;float: left;line-height: 100px;margin-top: 20px;">
+									<a href=""><img src="img/picture/product10.jpg" width="60" height="60" /></a>
+								</div>
+								<span style="width: 120px ;float: left;margin-left: 10px;font-size: 14px;margin-top: 15px;color: gray;">苹果(Apple)</br>ipod</br><span class="price">￥2440.00元</span></div>
+
+							<div class="tui">
+								<div style="width: 60px ;height: 60px;float: left;line-height: 100px;margin-top: 20px;">
+									<a href=""><img src="img/picture/product7.jpg" width="60" height="60" /></a>
+								</div>
+								<div style="width: 120px ;float: left;margin-left: 10px;font-size: 14px;margin-top: 15px;color: gray;">惠普笔记本(HP)</br>1201AX</br><span class="price">￥4240.00元</span></div>
+							</div>
+							<div class="tui">
+								<div style="width: 60px ;height: 60px;float: left;line-height: 100px;margin-top: 20px;">
+									<a href=""><img src="img/picture/product3.jpg" width="60" height="60" /></a>
+								</div>
+								<div style="width: 120px ;float: left;margin-left: 10px;font-size: 14px;margin-top: 15px;color: gray;">爱普生(Epson)</br>EPL-N2500 A3黑白</br><span class="price">￥7600.00元</span></div>
+							</div>
+							<div class="tui">
+								<div style="width: 60px ;height: 60px;float: left;line-height: 100px;margin-top: 20px;">
+									<a href=""><img src="img/picture/product6.jpg" width="60" height="60" /></a>
+								</div>
+								<div style="width: 120px ;float: left;margin-left: 10px;font-size: 14px;margin-top: 15px;color: gray;">三星(SAMSUNG)</br>Anycall Z650</br><span class="price">￥1440.00元</span></div>
+							</div>
+							<div class="tui">
+								<div style="width: 60px ;height: 60px;float: left;line-height: 100px;margin-top: 20px;">
+									<a href=""><img src="img/picture/product5.jpg" width="60" height="60" /></a>
+								</div>
+								<div style="width: 120px ;float: left;margin-left: 10px;font-size: 14px;margin-top: 15px;color: gray;">创维(Skyworth)</br>32英寸液晶电视</br><span class="price">￥3440.00元</span></div>
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+				<div id="bmiddle" style="width: 780px;">
+					<div style="background: url(img/sort1.gif);line-height: 33px;padding-left: 20px;">
+						<span style="background: url(img/home.gif) no-repeat center left; padding-left: 15px;">您的位置:</span>&nbsp;<span><a href="" style="text-decoration: none;color: gray;">首页</a>&nbsp;>>&nbsp;</span><span><a href="" style="text-decoration: none;color: gray;">家用电器</a></span>&nbsp;>>&nbsp;<span><a href="" style="text-decoration: none;color: gray;">生活电器</a></span>&nbsp;>>&nbsp;<span>
+						创维(Skyworth)100英寸液晶电视</span>
+					</div>
+					<!--产品详情-->
+					<div style="margin-left:3px ;">
+						<div id="proimgbox">
+							<div id="bigimgbox">
+								<img id="bigimg" src="img/tv/1.png" width="300px" height="300px" onmousemove="move();" onmouseout="hiddenobj('fullimgbox');" />
+							</div>
+							<div id="smallimglist">
+								<div><img src="img/tv/1.png" id="p1" onmouseover="mouseOverHandler('img/tv/1.png');mindiv();" /></div>
+								<div><img src="img/tv/2.png" id="p2" onmouseover="mouseOverHandler('img/tv/2.png');mindiv();" /></div>
+								<div><img src="img/tv/3.png" id="p3" onmouseover="mouseOverHandler('img/tv/3.png');mindiv();" /></div>
+								<div><img src="img/tv/4.png" id="p4" onmouseover="mouseOverHandler('img/tv/4.png');mindiv();" /></div>
+								<div><img src="img/tv/3.png" id="p5" onmouseover="mouseOverHandler('img/tv/3.png');mindiv();" /></div>
+							</div>
+						</div>
+
+						<div id="proinfolist">
+							<div id="title"><span style="color: darkblue; font-weight: bold;font-size: 16px;">创维 (Skyworth)100G9 智能平板电视</span><span style="float: right;"><a href="" style="color: gray;">(0篇用户评论</a>|<a href="" style="color: gray;">写评论)</a></span></div>
+							<div><span>商品编号:</span>&nbsp;<span>10034614556444</span></div>
+							<div style="padding-bottom:20px ; border-bottom: 1px gray dotted;"><span>商品积分:</span>&nbsp;<span style="color: red;">1233</span>&nbsp;<span><a href="" style="color: gray; text-decoration: none;">(积分可兑换优惠券)</a></span></div>
+							<div style="padding-top:10px " ;><span>市场价格:</span>&nbsp;<span style="text-decoration: line-through;color: gray;">￥150000.00元</span></div>
+							<div><span>本站价格:</span>&nbsp;<span style="color: red; font-weight: bold;">￥100000.00元</span></div>
+							<div><span>为您节省:</span>&nbsp;
+								<spanstyle="color: red; font-weight: bold;">￥50000.00元</span>
+							</div>
+							<div><span>订购数量:</span>&nbsp;<input type="text" size="7" value="1" /></div>
+							<div class="jiaru">
+								<a href=""><img src="img/buy.gif" /></a>&nbsp;
+								<a href=""><img src="img/duibi.gif" /></a>&nbsp;
+								<a href=""><img src="img/shoucang.gif" /></a>
+							</div>
+
+						</div>
+						<!--广告支付-->
+						<div style="margin: 5px; float: right;">
+							<a href=""><img style="margin: 5px;" src="img/pay/alipay_buy.gif" /></a>
+							<a href=""><img style="margin: 5px; margin-right: none;" src="img/pay/chinab.gif" /></a>
+						</div>
+
+						<!--放大镜盒子-->
+						<div id="fullimgbox"><img src="img/tv/1.png" id="targetimg" width="1000" height="1000" /></div>
+
+					</div>
+					
+					<div class="proinfo">
+						<div class="protitle">
+							<div id="b1" name="na" style="background:; margin-left: -10px; "onmouseover="changep(1)"><a style="color: black;"  >详细说明</a></div>
+							<div id="b2" name="na" style="background: ;" onmouseover="changep(2)"><a style="color: black;"  >相关商品</a></div>
+							<div id="b3" name="na" style="background: ;" onmouseover="changep(3)"><a style="color: black;"  >商品评论</a></div>
+							<div id="b4" name="na" style="background: ;" onmouseover="changep(4)"><a style="color: black;"  >付款方式</a></div>
+							<div id="b5" name="na" style="background: ;" onmouseover="changep(5)"><a style="color: black;"  >送货方式</a></div>
+						</div>
+						
+						<div id="protitnfo">
+							<div id="info1" name="bp" class="proinfobox">
+								<ul class="attributes-list" style="list-style: none;">
+
+						            <li title="2017010808947154">CCC证书编号:&nbsp;<a href="https://baike.taobao.com/view.htm?wd=2017010808947154&amp;ac=29" target="blank" onclick="javascript:goldlog.record('/egatekeeper.333','','','H46896570')">2017010808947154</a></li>
+						        
+						            <li title="Skyworth/创维 100G9">产品名称:&nbsp;Skyworth/创维 100G9</li>
+						            
+						            <li title="2017-03">上市时间:&nbsp;2017-03</li>
+						            
+						            <li title="93.5kg">净重(不含底座):&nbsp;93.5kg</li>
+						            
+						            <li title="104.5kg">净重(含底座):&nbsp;104.5kg</li>
+						            
+						            <li title="2490x590x1840mm">包装尺寸:&nbsp;2490x590x1840mm</li>
+						            
+						            <li title="2258x94x1379mm">含边框整屏尺寸:&nbsp;2258x94x1379mm</li>
+						            
+						            <li title="Skyworth/创维">品牌:&nbsp;Skyworth/创维</li>
+						            
+						            <li title="100g9">创维LED型号:&nbsp;100g9</li>
+						            
+						            <li title="3层">堆码层数极限:&nbsp;3层</li>
+						            
+						            <li title="100英寸">屏幕尺寸:&nbsp;100英寸</li>
+						            
+						            <li title="142kg">毛重:&nbsp;142kg</li>
+						            
+						            <li title="平板">电视形态:&nbsp;平板</li>
+						            
+						            <li title="中国大陆">采购地:&nbsp;中国大陆</li>
+						            
+						            <li title="2160p">视频显示格式:&nbsp;2160p</li>
+						            
+						            <li title="3840x2160">分辨率:&nbsp;3840x2160</li>
+						            
+						            <li title="3个">HDMI接口数量:&nbsp;3个</li>
+						            
+						            <li title="LED发光二极管">背光灯类型:&nbsp;LED发光二极管</li>
+						            
+						            <li title="16:9">屏幕比例:&nbsp;16:9</li>
+						            
+						            <li title="USB媒体播放 WIFI 互联网电视 网络高清播放 网络在线电影">附加功能:&nbsp;USB媒体播放 WIFI 互联网电视 网络高清播放 网络在线电影</li>
+						            
+						            <li title="100G9">颜色分类:&nbsp;100G9</li>
+						            
+						            <li title="无">3D类型:&nbsp;无</li>
+						            
+						            <li title="三级">能效等级:&nbsp;三级</li>
+						            
+						            <li title="视频输入、输出接口 HDMI RF射频接口 LAN端子 USB">接口类型:&nbsp;视频输入、输出接口 HDMI RF射频接口 LAN端子 USB</li>
+						            
+						            <li title="全部支持">网络连接方式:&nbsp;全部支持</li>
+						            
+						            <li title="酷开系统">操作系统:&nbsp;酷开系统</li>
+						            
+						            <li title="逐行扫描">扫描方式:&nbsp;逐行扫描</li>
+						            
+						            <li title="D/K PAL NTSC">接收制式:&nbsp;D/K PAL NTSC</li>
+						            
+						            <li title="2258×94×1379mm">主机尺寸（不含底座）mm:&nbsp;2258×94×1379mm</li>
+						            
+						            <li title="LED电视">电视类型:&nbsp;LED电视</li>
+						            
+        
+       							 </ul>
+							</div>
+							
+							<div id="info2" class="proinfobox" name="bp" style="display: none;">
+								我是第二个
+							</div>
+							<div id="info3" class="proinfobox" name="bp" style="display: none;">
+								我是第三个
+							</div>
+							<div id="info4" class="proinfobox"  name="bp" style="display: none;">
+								我是第四个
+							</div>
+							<div id="info5"  class="proinfobox" name="bp" style="display: none;">
+								我是第五个
+							</div>
+						</div>
+						
+						
+						
+						
+						
+						
+					</div>
+					
+
+				</div>
+
+			</div>
+			<!--网站底部-->
+			<div id="pagefooter">
+				<div class="footInfo">
+					<ul>
+						<li class="listnav">
+							<h4>关于我们</h4>
+							<ul>
+								<li>
+									<a href="">发展历程</a>
+								</li>
+								<li>
+									<a href="">联系方式</a>
+								</li>
+								<li>
+									<a href="">公司介绍</a>
+								</li>
+								<li>
+									<a href="">企业文化</a>
+								</li>
+							</ul>
+						</li>
+						<li class="listnav">
+							<h4>付款方式</h4>
+							<ul>
+								<li>
+									<a href="">银行汇款</a>
+								</li>
+								<li>
+									<a href="">在线支付</a>
+								</li>
+								<li>
+									<a href="">银行汇款</a>
+								</li>
+								<li>
+									<a href="">公司转账</a>
+								</li>
+							</ul>
+						</li>
+						<li class="listnav">
+							<h4>送货方式</h4>
+							<ul>
+								<li>
+									<a href="">上门自提</a>
+								</li>
+								<li>
+									<a href="">EMS快递</a>
+								</li>
+								<li>
+									<a href="">快递发货</a>
+								</li>
+								<li>
+									<a href="">平邮发货</a>
+								</li>
+							</ul>
+						</li>
+						<li class="listnav">
+							<h4>售后服务</h4>
+							<ul>
+								<li>
+									<a href="">质保承诺</a>
+								</li>
+								<li>
+									<a href="">退换货政策</a>
+								</li>
+								<li>
+									<a href="">价格保护</a>
+								</li>
+								<li>
+									<a href="">返修申请</a>
+								</li>
+							</ul>
+						</li>
+						<li class="listnav">
+							<h4>购物帮助</h4>
+							<ul>
+								<li>
+									<a href="">用户等级</a>
+								</li>
+								<li>
+									<a href="">积分获取</a>
+								</li>
+								<li>
+									<a href="">购物流程</a>
+								</li>
+								<li>
+									<a href="">常见问题</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+
+				</div>
+
+				<div id="foot">
+					<div><span>淘宝店</span><span>1号店</span><span>拍拍店</span><span>小鹿店</span></div>
+					<div><span>Copyright 2017 版权所有:李易昇小鹿商城</span></div>
+					<div><span>客服电话：1008511</span><span>传真:100111</span></div>
+					<div><span>邮箱：909627128@qq.com</span></div>
+				</div>
+
+			</div>
+		</div>
+	</body>
+
+</html>
